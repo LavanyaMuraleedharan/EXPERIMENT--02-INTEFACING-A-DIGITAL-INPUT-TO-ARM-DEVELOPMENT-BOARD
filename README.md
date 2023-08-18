@@ -51,12 +51,63 @@ The full form of an ARM is an advanced reduced instruction set computer (RISC) m
 
 
 ## STM 32 CUBE PROGRAM :
+```
+DEVELOPED BY : LAVANYA . M
+REGISTER NUMBER : 212222110021
+```
+```C
+#include "main.h"
+#include "stdbool.h"
+bool button_status;
+void push_button();
 
+void SystemClock_Config(void);
+static void MX_GPIO_Init(void);
 
+int main(void)
+{
+  HAL_Init();
+  SystemClock_Config();
+  MX_GPIO_Init();
+  
+  while (1)
+  {
+	   push_button();
+  }
+}
+
+void push_button()
+{
+	button_status = HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_13);
+	if(button_status == 0)
+	{
+		 HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_SET);
+		 HAL_Delay(1000);
+		 HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_RESET);
+		 HAL_Delay(1000);
+	}
+ else
+ {
+	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_RESET);
+ }
+}
+```
 
 ## Output  :
  
+ ## LED OFF :
+![LED OFF PMC EXP2](https://github.com/LavanyaMuraleedharan/EXPERIMENT--02-INTEFACING-A-DIGITAL-INPUT-TO-ARM-DEVELOPMENT-BOARD/assets/120103862/93c5dedf-8bd6-4199-8e06-1d25b56ac3d9)
+
  
+ ## LED OFF WHILE BLINKING:
+
+![LED OFF WHILE BLINKIN PMCEXP2](https://github.com/LavanyaMuraleedharan/EXPERIMENT--02-INTEFACING-A-DIGITAL-INPUT-TO-ARM-DEVELOPMENT-BOARD/assets/120103862/f4df5709-3964-4359-ad49-91ddbf95a03a)
+
+ 
+ ## LED ON WHILE BLINKING :
+
+ ![LED ON WHILE BLINKING NEW PMC EXP2](https://github.com/LavanyaMuraleedharan/EXPERIMENT--02-INTEFACING-A-DIGITAL-INPUT-TO-ARM-DEVELOPMENT-BOARD/assets/120103862/727b16bd-c808-47d4-bb88-947e02857f62)
+
  
  
 ## Result :
